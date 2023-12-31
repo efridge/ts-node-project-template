@@ -1,0 +1,16 @@
+{
+  "name": "your-app-name",
+  "version": "1.0.0",
+  "description": "A short description of your app. Change the description as needed.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "Your Name Here",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-handlebars": "^7.1.2"
+  }
+}
