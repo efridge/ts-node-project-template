@@ -4,7 +4,7 @@
   "description": "A short description of your app. Change the description as needed.",
   "main": "main.ts",
   "scripts": {
-    "build": "npx tsc",
+    "build": "rm -rf dist; npx tsc; cp -r views dist; cp -r views ./src/app/public dist/app/",
     "test": "jest",
     "start": "ts-node --transpile-only ./src/main.ts",
     "dev": "nodemon ./src/main.ts"
