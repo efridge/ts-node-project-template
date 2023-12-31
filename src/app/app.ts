@@ -1,15 +1,17 @@
-// Import the express and handlebars libraries
+// Import the express and pino (logger) libraries
 import express, { Application } from "express";
-import { engine } from "express-handlebars";
+import { pino } from 'pino';
 
-// Import our routes (controllers and middleware)
+// Import our code (controllers and middleware)
 import { AppController } from "./controllers/app.controller";
 import { ErrorMiddleware } from "./middleware/error.middleware";
+import { HandlebarsMiddleware } from "./middleware/handlebars.middleware";
 
 class App {
   // Create an instance of express, called "app"
   public app: Application = express();
   public port: number;
+  private log: pino.Logger = pino();
 
   // Middleware and controller instances
   private errorMiddleware: ErrorMiddleware;
@@ -25,36 +27,18 @@ class App {
     // Serve all static resources from the public directory
     this.app.use(express.static(__dirname + "/public"));
 
-    this.initHandlebars();
-    this.initWebRoutes();
-    this.initMiddleware();
-  }
+    // Set up handlebars for our templating
+    HandlebarsMiddleware.setup(this.app);
 
-  private initHandlebars() {
-    // set up handlebars view engine, register w/ express
-    this.app.engine(
-      ".hbs",
-      engine({
-        extname: ".hbs",
-        defaultLayout: "main",
-      })
-    );
-    this.app.set("view engine", ".hbs");
-    this.app.set("views", "./views");
-  }
-
-  private initWebRoutes() {
+    // Tell express what to do when our routes are visited
     this.app.use(this.appController.router);
-  }
-
-  private initMiddleware() {
     this.app.use(this.errorMiddleware.router);
   }
 
   public listen() {
     // Tell express to start listening for requests on the port we specified
     this.app.listen(this.port, () => {
-      console.log(
+      this.log.info(
         `Express started on http://localhost:${this.port}; press Ctrl-C to terminate.`
       );
     });

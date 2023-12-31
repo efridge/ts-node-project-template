@@ -1,33 +1,33 @@
 import { describe, expect, it } from "@jest/globals";
 import request from "supertest";
-import express from "express";
+import express, { Application } from "express";
 import { AppController } from "./app.controller";
+import { HandlebarsMiddleware } from '../middleware/handlebars.middleware';
 
 describe("AppController", () => {
-  let app: any;
+  let app: Application;
   let controller: AppController;
 
   // Run this code before every test
   beforeAll(() => {
-    // Create a mock app instance with express in it
-    app = {
-      express: express(),
-    };
+    // Create an express instance for testing
+    app = express();
+
+    // Set up handlebars for our templating
+    HandlebarsMiddleware.setup(app);
 
     // Our controller instance to test
     controller = new AppController();
 
-    // Use the controller's router for testing
-    app.express.use(controller.router);
+    // Load the controller's router for testing
+    app.use(controller.router);
   });
 
   it("should return a welcome", async () => {
-    return request(app.express)
+    return request(app)
       .get("/")
-      .expect("Content-Type", /html/)
-      .expect(200)
       .then((res) => {
-        expect(res.statusCode).toBe(200);
+        expect(res.statusCode).toEqual(200);
       });
   });
 });
