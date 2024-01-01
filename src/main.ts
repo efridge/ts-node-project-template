@@ -1,9 +1,8 @@
 import App from "./app/app";
 
-// Import dotenv and load the config
-// TODO: finish setting this up
-import dotenv from "dotenv";
-dotenv.config();
+// Load values from our config.env file, if it exists
+import dotenv from 'dotenv'; 
+dotenv.config({path: (__dirname + "/config.env")}); 
 
 // Choose the port number to run the app under
 const port: number = Number(process.env.PORT) || 3000;
