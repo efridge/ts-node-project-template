@@ -16,6 +16,7 @@ An in-depth paragraph about your project and overview of use.
 
 * How/where to download your program
 * Any modifications needed to be made to files/folders
+* Other things needed to install the program
 
 ### Executing program
 
