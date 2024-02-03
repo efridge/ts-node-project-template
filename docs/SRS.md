@@ -81,9 +81,9 @@ List any assumed factors (as opposed to known facts) that could affect the requi
 #### 3.1.1 User interfaces
 Define the software components for which a user interface is needed. Describe the logical characteristics of each interface between the software product and the users. This may include sample screen images, any GUI standards or product family style guides that are to be followed, screen layout constraints, standard buttons and functions (e.g., help) that will appear on every screen, keyboard shortcuts, error message display standards, and so on. Details of the user interface design should be documented in a separate user interface specification.
 
-Could be further divided into Usability and Convenience requirements.
-
 #### 3.1.2 Hardware interfaces
+Note from Dr. Fridge: this section does not apply, since we're not dealing with hardware. I'm leaving it here for completeness. Just put something like "This software is web-based and does not have any hardware interfaces beyond those found in typical web servers."
+
 Describe the logical and physical characteristics of each interface between the software product and the hardware components of the system. This may include the supported device types, the nature of the data and control interactions between the software and the hardware, and communication protocols to be used.
 
 #### 3.1.3 Software interfaces
