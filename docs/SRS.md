@@ -5,6 +5,8 @@ Prepared by <author>
 <organization>  
 <date created>  
 
+*This document is a simplified version of [one developed by Jose Montoya](https://github.com/jam01/SRS-Template/) based on various IEEE specifications*
+
 Table of Contents
 =================
 * 1 [Introduction](#1-introduction)
